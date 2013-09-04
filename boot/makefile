@@ -4,12 +4,12 @@
 #
 
 bootflp.bin : boot.bin setup.bin    headup.bin  bsboot
-	copy /b boot.bin+setup.bin bootflp.bin
+	$(COPY) /b boot.bin+setup.bin bootflp.bin
 
 setup.bin: setup.asm
 	$(NASM) setup.asm -f bin -o setup.bin
 boot.bin :  boot.asm
-	$(NASM) boot.asm  -f bin -o boot.bin
+	$(NASM) boot.asm -f bin -o boot.bin
 headup.bin : headup.asm
 	$(NASM) headup.asm -f bin -o headup.bin
 bsboot  :bsboot.asm

@@ -1,0 +1,7 @@
+ldflags -r 不合适，原因未知
+gcc -O4 test1异常，不合适，原因未知
+
+head.asm -f 由aout改为win32
+sky.ld   output_format注释掉，使用默认为pei-i386
+
+djgpp 是为DOS移植的，mingw更接近gnu的风格

@@ -1,21 +1,24 @@
 #makefile for
 #         brightsky
 #”√Nasm ∫Õ GCC±‡“Î
+#for 0.04 
 export
 
 NASM=nasm 
 LD  =ld
 GCC =gcc
 INCLUDE= -I..\include
-CF = -c -Wall -O4    -fwritable-strings -fno-builtin -nostdlib -nostdinc 
+CF = -c -Wall -O2    -fno-builtin -nostdlib -nostdinc 
 CFLAG= $(CF) $(INCLUDE)
-ASFLAG= -f aout
+ASFLAG= -f win32
 LDFLAG = -T sky.ld -nostdlib -s -x
+COPY=copy
+DEL=del
 bsky.flp : boo   kerne
-	copy  /b boot\bootflp.bin+kernel\kernel.bin+add.bin bsky.flp
-	copy  /b boot\headup.bin+kernel\kernel.bin    bsldr
-	copy  /b boot\bsboot bsboot
-	$(MAKE) clean
+	$(COPY)  /b boot\bootflp.bin+kernel\kernel.bin+add.bin bsky.flp
+	$(COPY)  /b boot\headup.bin+kernel\kernel.bin    bsldr
+	$(COPY)  /b boot\bsboot bsboot
+#	$(MAKE) clean
 #	del boot\*.bin
 #	del kernel\*.o
 #	del kernel\*.bin
@@ -28,6 +31,6 @@ boo  :
 kerne:  
 	make -C kernel
 clean:
-	del boot\*.bin
-	del kernel\*.o
-	del kernel\*.bin
+	$(DEL) boot\*.bin
+	$(DEL) kernel\*.o
+	$(DEL) kernel\*.bin

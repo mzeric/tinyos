@@ -8,7 +8,7 @@ boot.asm 和 setup.asm 编译成bootflp.bin 是软盘启动文件 用于虚拟机测试
 
 
 bsboot.asm 和 headup.asm 
-   其中bsboot.asm是FAT32的硬盘引导文件，负责加载bsldr
+   其中boot.asm是FAT32的硬盘引导文件，负责加载bsldr
    headup.asm功能和上面的setup.asm是一样的，只是改变了链接方式
    
 

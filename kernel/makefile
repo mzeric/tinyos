@@ -6,8 +6,8 @@ OBJ= head.o kernel.o sched.o i386.o  string.o  message.o console.o video.o kbd.o
     memory.o 
 
 kernel.bin: $(OBJ)
-	$(LD) $(LDFLAG) $(OBJ) -o kernel.bin
-#	objcopy   kernel.o ..\kernel.bin -O binary
+	$(LD) $(LDFLAG) $(OBJ) -o kernel.win32
+	objcopy   kernel.win32 kernel.bin -O binary
 %.o:%.asm
 	$(NASM) $(ASFLAG) -o $@ $<
 

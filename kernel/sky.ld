@@ -1,5 +1,5 @@
 ENTRY(_start)
-OUTPUT_FORMAT("binary")
+/*OUTPUT_FORMAT("binary")*/
 SECTIONS{
  . =0x8000;
 
@@ -7,7 +7,7 @@ SECTIONS{
       *(.text)
        }
  .data :{
-      *(.data)
+      *(.*data)
        }
  .bss :{
      *(.bss)

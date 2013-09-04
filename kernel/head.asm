@@ -7,7 +7,7 @@
 _kpg_dir equ 0
 _pgt0 equ 0x1000
 _pgt1 equ 0x2000
-extern _main,_do_kbd,_do_nop
+extern _kernel_main,_do_kbd,_do_nop
 extern _do_mouse,_do_timer,_test_system_call
 global _start ,_idt ,_kbd ,_hd_asm,_nop ;引出以便ld识别
 global _mouse_asm,_timer_asm
@@ -93,7 +93,7 @@ loadidt:
 lidt	[idt_descr]
 
 mov eax,0
-call _main
+call _kernel_main
 
 jmp $
 

@@ -76,12 +76,11 @@ void detect_system(sysinfo*info){
 			"cpuid":
 		"=a"(i));
 		i=(i>>8)&0xf;
-		if(i>6)kpf("Style UnKnown!\n");
-		else kpf("\n    -> Style: %s\n",cpu_str[i-2]);
+		kpf("\n    -> Style: %s\n",cpu_str[i-2]);
 		
 }
 
-int main()
+int kernel_main()
 {
 	MSG kmsg;
 	int i;
@@ -137,7 +136,7 @@ int main()
 	*/
 	proc_init();
 	test1();
-	
+	//while(1);
 	init_con();
 	
 	

@@ -4,6 +4,7 @@
 功能：控制台驱动
 内部命令：help，credit，vga-test，sysinfo，whoami
 日期：~2006-5-31
+修改：~2010-10-20
 */
 
 #include<type.h>
@@ -11,6 +12,7 @@
 #include<video.h>
 #include<string.h> 
 #include<kbd.h>
+#include<console.h>
 /*define in video.h   
 
   unsigned int v_color;//前景色
@@ -168,9 +170,9 @@ void vga_test(void)
 }
 void credit(void)
 {
-	kpf("\tWelcome to this OS [Brightsky]\n
-		this a simple edition,but it's very interesting\n\tjust enjoy! ** ^_^ **
-		\t\t\t---- Skysmiler	\n\t\t\t\t\t\t(With me:xiatianxiao@gmail.com )");
+	kpf("\tWelcome to this OS [Brightsky]\n"
+		"this a simple edition,but it's very interesting\n\tjust enjoy! ** ^_^ **"
+		"\n\t\t\t\t\t\t---- Skysmiler	\n\t\t\t\t\t\t(With me:xiatianxiao@gmail.com )");
 }
 
 void exec_inter(char* str)
@@ -185,7 +187,7 @@ void exec_inter(char* str)
 	else if(!strcmp(str,"sysinfo"))
 		detect_system();
 	else if(!strcmp(str,"whoami")||!strcmp(str,"who"))
-		kpf("\tBrightsky 0.03 by Skysmiler build at 2006-10-20");
+		kpf("\tBrightsky 0.04 by Skysmiler build at 2010-10-20 with mingw");
 	else
 		kpf("     Unknown command!");
 	return ;
