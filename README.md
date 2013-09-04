@@ -4,6 +4,7 @@
 
 ## A simple OS just for fun!
 
+## 不同的版本，可以用github切换不同的版本的tag，如何切换详见github文档
 
 众人拾柴火焰高!
 版本说明
