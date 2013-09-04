@@ -38,11 +38,7 @@ uint translate_char(char ch);
 
 }kbd_buf;
 
-static const  char keymap[256]={
-	0,0x01,'1','2','3','4','5','6','7','8','9','0',
-	'-','=','\b','\t','q','w','e','r','t','y','u','i','o','p','[',']','\n',0x1d,
-	'a','s','d','f','g','h','j','k','l',';','\'','`',0x2a,'\\',
-	'z','x','c','v','b','n','m',',','.','/',0x36,0x37,0x38,' ',0x3a};
+extern const char keymap[256];
 	
 
 

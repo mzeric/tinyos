@@ -150,16 +150,7 @@ void con_write()
 }
 #define  x_vga 640
 #define  y_vga 480
-void line(int x,int y,int m,int n,int c){
-	int q=1,i,j,k;
-	if(m<x)q=-1;
-	k=(n-y)/(m-x);
-	
-	for(i=0;i<(m-x)*q;i++){
-		j=i*k*q+y;
-		pixel(x+i*q,j,c);
-	}
-}
+
 void vga_test(void)
 {
 	
@@ -179,7 +170,7 @@ void credit(void)
 {
 	kpf("\tWelcome to this OS [Brightsky]\n
 		this a simple edition,but it's very interesting\n\tjust enjoy! ** ^_^ **
-		\t\t\t---- Skysmiler	\n\t\t\t\t\t\t(with me:xiatianxiao@gmail.com)");
+		\t\t\t---- Skysmiler	\n\t\t\t\t\t\t(With me:xiatianxiao@gmail.com )");
 }
 
 void exec_inter(char* str)
@@ -194,7 +185,7 @@ void exec_inter(char* str)
 	else if(!strcmp(str,"sysinfo"))
 		detect_system();
 	else if(!strcmp(str,"whoami")||!strcmp(str,"who"))
-		kpf("\tBrightsky 0.01 by Skysmiler build at 2006-5-31");
+		kpf("\tBrightsky 0.03 by Skysmiler build at 2006-10-20");
 	else
 		kpf("     Unknown command!");
 	return ;

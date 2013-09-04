@@ -1,25 +1,26 @@
 #makefile for
 #         brightsky
-#
+#”√Nasm ∫Õ GCC±‡“Î
 export
 
 NASM=nasm 
 LD  =ld
 GCC =gcc
 INCLUDE= -I..\include
-CF = -c -Wall  -fwritable-strings -fno-builtin -nostdlib -nostdinc 
+CF = -c -Wall -O4    -fwritable-strings -fno-builtin -nostdlib -nostdinc 
 CFLAG= $(CF) $(INCLUDE)
 ASFLAG= -f aout
 LDFLAG = -T sky.ld -nostdlib -s -x
 bsky.flp : boo   kerne
-	copy  /b boot\bootos.bin+kernel\kernel.bin+add.bin bsky.flp
-	copy  /b bsky.flp c:\bochs\os\kernel.flp
+	copy  /b boot\bootflp.bin+kernel\kernel.bin+add.bin bsky.flp
+	copy  /b boot\headup.bin+kernel\kernel.bin    bsldr
+	copy  /b boot\bsboot bsboot
 	$(MAKE) clean
-	del boot\*.bin
+#	del boot\*.bin
 #	del kernel\*.o
 #	del kernel\*.bin
 	@echo --------------------------
-	@echo Arouser build successed!
+	@echo BrightSky °æ«Áø’°ø build successed!
 	@echo --------------------------
 
 boo  :

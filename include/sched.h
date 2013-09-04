@@ -4,21 +4,21 @@
 #include<type.h>
 
 typedef struct regs_t {
-	long	ebx;
-	long	ecx;
-	long	edx;
-	long	esi;
-	long	edi;
-	long	ebp;
-	long	eax;
-	long	ds;
-	long	es;	/* index of execption */
-	long	index;	/* index of interrupt, error of execption */
-	long	eip;
-	long	cs;
-	long	eflags;
-	long	esp;
-	long	ss;
+unsigned	long	ebx;
+unsigned	long	ecx;
+unsigned	long	edx;
+unsigned	long	esi;
+unsigned	long	edi;
+unsigned	long	ebp;
+unsigned	long	eax;
+unsigned	long	ds;
+unsigned	long	es;	/* index of execption */
+unsigned	long	index;	/* index of interrupt, error of execption */
+unsigned	long	eip;
+unsigned	long	cs;
+unsigned	long	eflags;
+unsigned	long	esp;
+unsigned	long	ss;
 } regs_t;
 
 typedef struct proc_t

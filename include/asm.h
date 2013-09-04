@@ -29,16 +29,14 @@ ushort _v; \
 __asm__ volatile ("inb %%dx,%%ax":"=a" (_v):"d" (port)); \
 _v; \
 })
-#define outl(port,value) \
-__asm__ volatile ("outl %%eax,%%dx"::"a" (value),"d" (port))
 
 
-#define outb_p(port,value) \
+#define outbp(port,value) \
 __asm__ volatile ("outb %%al,%%dx\n" \
 		"\tjmp 1f\n" \
 		"1:\tjmp 1f\n" \
 		"1:"::"a" (value),"d" (port))
-#define inb_p(port) ({ \
+#define inbp(port) ({ \
 unsigned char _v; \
 __asm__ volatile ("inb %%dx,%%al\n" \
 	"\tjmp 1f\n" \

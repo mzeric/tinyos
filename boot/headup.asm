@@ -1,5 +1,8 @@
-[org 0x0000]
-jmp start
+[bits 16]
+[org 0x7e00]
+
+_setup:
+jmp start_setup
 lod db 'Setup runing OK !'
     db 13,10,0
 m_a20 db 'A20 Gate Opend !'
@@ -10,15 +13,15 @@ m_pm  db 'Here Entering Protect Model !'
     db 13,10,0
 m_8259A db 'Reprogram The 8529A !'
       db 13,10,0
-SETUPSEG  equ 0x9000   ; 会被gdt引用 
-SETUPOFF  equ 0x0000
+SETUPSEG  equ 0x0000   ; 会被gdt引用 
+SETUPOFF  equ 0x7e00
 SETUPSEC  equ  2
 SYSSEC    equ  64
 
 SYSSEG    equ 0x0000;real model address
 SYSOFF    equ 0x8000
 BOOTDRIVER equ 0;floppy a
-;----------------------------调用例程
+;----------------------------调用例程 
 print:
 lodsb
 or al,al
@@ -36,7 +39,7 @@ ret
 gdt_addr:
             dw      256*8-1        
             dw      _gdt           
-            dw      0x0009    ;_gdt只是偏移量
+            dw      0x0000    ;_gdt是偏移量,此处为16位的段址
 _gdt:
 
 gdt_null:
@@ -69,16 +72,17 @@ Empty_8042:
   ret
 
 ;+++++++++++++++++++++++++++
-start:
+start_setup:
 
 mov ax,SETUPSEG
 mov ds,ax
 mov es,ax
 mov ss,ax
-mov sp,0xffff
+mov sp,0x07c00
 
 mov si,lod
 call print
+;jmp $
 ;打开A20地址线
 
 call              Empty_8042
@@ -91,18 +95,18 @@ call              Empty_8042
 mov si,m_a20
 call print
 ;装载内核
-load_system:
-mov               ax , SYSSEG  ;setupseg        
-mov               es , ax
-mov               bx , SYSOFF  ;SETUPOFF + SETUPSEC*512
-mov               ah , 2
-mov               dh , 0
-mov               dl , BOOTDRIVER
-mov               ch , 0
-mov               cl , 1 + 1 + SETUPSEC    
-mov               al , SYSSEC           
-int               0x13
-jc                load_system
+;load_system:
+;mov               ax , SYSSEG  ;setupseg        
+;mov               es , ax
+;mov               bx , SYSOFF  ;SETUPOFF + SETUPSEC*512
+;mov               ah , 2
+;mov               dh , 0
+;mov               dl , BOOTDRIVER
+;mov               ch , 0
+;mov               cl , 1 + 1 + SETUPSEC    
+;mov               al , SYSSEC           
+;int               0x13
+;jc                load_system
 
 mov si,m_ker
 call print
@@ -111,14 +115,13 @@ call print
 
 cli;关中断直至main
 jmp movend
-cld
-mov si,SETUPOFF+SETUPSEC*512
-mov ax,SYSSEG
-MOV es,ax
-mov di,SYSOFF
-MOV cx,SYSSEC*128
-rep 
-movsd
+;cld
+;mov si,SETUPOFF+SETUPSEC*512
+;mov ax,SYSSEG
+;MOV es,ax
+;mov di,SYSOFF
+;MOV cx,SYSSEC*128
+;rep movsd
  
 movend:
 ;重写8259A中断向量
@@ -175,5 +178,5 @@ jmp dword         0x8:SYSOFF  ;
 ;as the prepare for work of Kernel,now it's the time to
 
 jmp $
-times 1022-($-$$)db 0
-dw 0xaa55
+times 510-($-$$)db 0
+ dw 0xaa55

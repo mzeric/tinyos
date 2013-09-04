@@ -44,8 +44,8 @@ int text_mode;
 #define SPACING 2
 #define CHAR_HEIGHT 16
 #define LINE_HEIGHT (CHAR_HEIGHT + SPACING)
-#define TIPS_POS	(LINE_HEIGHT * ROWS)
-#define TIPS_HEIGHT	(HEIGHT - LINE_HEIGHT * ROWS)
+#define V_POS	(LINE_HEIGHT * ROWS)
+#define V_HEIGHT	(HEIGHT - LINE_HEIGHT * ROWS)
 
 #define ASC_WIDTH 8
 #define CHS_WIDTH 16

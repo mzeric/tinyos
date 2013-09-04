@@ -39,14 +39,20 @@ void puts(char* str)
 	while (*str) {
 		*p++ = *str++;
 		*p++ = v_color;
-		c_cols++;
+		if(++c_cols>COLS){
+			c_cols=0;
+			c_rows++;
+		}
 	}
 }
 
 void putc(char ch)
 {
 	_putc(ch, c_rows, c_cols);
-	c_cols++;
+	if(++c_cols>COLS){
+			c_cols=0;
+			c_rows++;
+		}
 }
 //×Ö·ûÊä³ö
 void _putc(char ch, int x, int y)
@@ -205,17 +211,17 @@ void clear_vram(void)
 		
 		off = VRAM_G;
 		if ((1 << i) & 0)
-			for (j = 0; j <= COLS*TIPS_POS; j++)
+			for (j = 0; j <= COLS*V_POS; j++)
 				*off++ = 0x0;
 			else
-				for (j = 0; j <= COLS*TIPS_POS; j++)
+				for (j = 0; j <= COLS*V_POS; j++)
 					*off++ = 0x0;
 				
 				if ((1 << i) & 0)
-					for (; j < COLS * (TIPS_POS + 1); j++)
+					for (; j < COLS * (V_POS + 1); j++)
 						*off++ = 0x0;
 					else
-						for (; j < COLS * (TIPS_POS + 1); j++)
+						for (; j < COLS * (V_POS + 1); j++)
 							*off++ = 0x0;
 						
 						if ((1 << i) & 0)
@@ -229,5 +235,14 @@ void clear_vram(void)
 	return;
 }
 
-
+void line(int x,int y,int m,int n,int c){
+	int q=1,i,j,k;
+	if(m<x)q=-1;
+	k=(n-y)/(m-x);
+	
+	for(i=0;i<(m-x)*q;i++){
+		j=i*k*q+y;
+		pixel(x+i*q,j,c);
+	}
+}
 

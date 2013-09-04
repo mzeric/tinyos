@@ -1,0 +1,18 @@
+# boot链接功能说明
+#
+#
+
+boot.asm 和 setup.asm 编译成bootflp.bin 是软盘启动文件 用于虚拟机测试
+   其中boot.asm是软盘引导装载文件  
+   setup.asm负责head.asm的前端初始化(一直想把它去掉)
+
+
+bsboot.asm 和 headup.asm 
+   其中bsboot.asm是FAT32的硬盘引导文件，负责加载bsldr
+   headup.asm功能和上面的setup.asm是一样的，只是改变了链接方式
+   
+
+
+
+
+

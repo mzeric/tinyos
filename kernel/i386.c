@@ -84,8 +84,8 @@ void init_8259a(void){
 	outb(0xA1, 0x01);
 	
 	/*Disable all 8259 irq*/
-	outb_p(0x21, 0xff);
-	outb_p(0xA1, 0xff);
+	outbp(0x21, 0xff);
+	outbp(0xA1, 0xff);
 	oldcolor=getcolor();
 	setcolor(4);
 	puts("[OK]");

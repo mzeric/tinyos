@@ -7,7 +7,7 @@
 _kpg_dir equ 0
 _pgt0 equ 0x1000
 _pgt1 equ 0x2000
-extern _main,_do_kbd,_do_hd,_do_nop
+extern _main,_do_kbd,_do_nop
 extern _do_mouse,_do_timer,_test_system_call
 global _start ,_idt ,_kbd ,_hd_asm,_nop ;引出以便ld识别
 global _mouse_asm,_timer_asm
@@ -16,11 +16,12 @@ global _system_call_asm
 
 SECTION .text
 
-_start:			;内核开始的地方
+_start:			;内核开始的地方,代码段
 mov ax,0x10
 mov ds,ax		;重复设置寄存器->和setup.asm中一样
+mov ss,ax
 
-
+;jmp $
 
         
 ;设置页目录,8M,2 entry
@@ -55,9 +56,9 @@ mov dword[_kpg_dir+4],_pgt1+7 ;分段已经屏蔽(setup.asm)
         page_flush:
 
 lgdt   [_gdt_addr]
-
 push dword 0
         popf
+;jmp $
 	jmp 8:sky
 	sky:
  
@@ -114,11 +115,6 @@ call _do_timer
 popad
 iret;
 
-_hd_asm:         ;硬盘
-pushad
-call _do_hd
-popad
-iret;
 
 _system_call_asm:		;系统调用
 pushad

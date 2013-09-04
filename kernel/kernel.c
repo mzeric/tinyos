@@ -8,7 +8,6 @@
 #include<i386.h>
 #include<kbd.h>
 #include<mouse.h>
-#include<hd.h>
 #include<video.h>
 #include<type.h>
 #include<signal.h>
@@ -34,9 +33,9 @@ typedef struct sysinfo
 sysinfo brightskyinfo;
 
 void system_call_asm(void);
-void do_hd(void){}
 
-void test_system_call()
+
+void test_system_call()//½ø³ÌÇÐ»»²âÊÔ
 {
 	_putc('m', 4, 50);
 }
@@ -77,7 +76,8 @@ void detect_system(sysinfo*info){
 			"cpuid":
 		"=a"(i));
 		i=(i>>8)&0xf;
-		kpf("\n    -> Style: %s\n",cpu_str[i-2]);
+		if(i>6)kpf("Style UnKnown!\n");
+		else kpf("\n    -> Style: %s\n",cpu_str[i-2]);
 		
 }
 
@@ -104,11 +104,12 @@ int main()
 	
 	init_kbd();
 	init_mouse();
-
 	
 	//switch_vga_mode(vga12h);
 	//clear_vram();
-
+	
+	//hd_write(1,buf);
+	//hd_read(1,b);
 	
 	kpf("init message queue\n");
 	init_message_kqueue(&kqueue);
@@ -125,7 +126,6 @@ int main()
 	sti();
 	
 	kpf("Hello,Brightsky!\n");
-	init_con();
 	
 	/*	atomic_t ato;
 	ato.counter=4;
@@ -135,8 +135,10 @@ int main()
 	kpf("i:%d\n",ato.counter);
 	
 	*/
-	//proc_init();
+	proc_init();
+	test1();
 	
+	init_con();
 	
 	
 	while (1) {
