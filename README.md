@@ -56,6 +56,7 @@ video.c :增加了几个图形函数如：画线、矩形； console.c :控制�
 需要：
 
 djgpp(gcc 的dos移植版本)
+brightsky 0.04可以使用mingw-gcc 来编译了
 
 ## 开始编译：
 
