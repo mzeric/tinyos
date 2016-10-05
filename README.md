@@ -1,6 +1,7 @@
 # BrightSky 操作系统github站点
 ## 从code.google.com/p/brightsky 上镜像到 @github.com 上来
 
+![alt tag](https://github.com/mzeric/tinyos/demo_qemu.png)
 
 ## A simple OS just for fun!
 
@@ -77,6 +78,8 @@ brightsky 0.04可以使用mingw-gcc 来编译了
   1. 如果在虚拟机中运行：
     1. 只需要BSKY.FLP一个文件，虚拟机(bochs)的配置文件
    可以参考源码目录下的bochrc003.txt，配置正确后直接启动bochs即可。
+    1. qemu -fda 从floppy 启动
+      ` qemu-system-i386 -fda BSKY.flp`
 
   2. 安装到真实机器：
    0.03版本支持从FAT32文件系统引导，所以可以简单的安装到真实的电脑里；
