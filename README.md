@@ -1,7 +1,7 @@
 # BrightSky 操作系统github站点
 ## 从code.google.com/p/brightsky 上镜像到 @github.com 上来
 
-![alt tag](https://github.com/mzeric/tinyos/demo_qemu.png)
+![alt tag](https://raw.githubusercontent.com/mzeric/tinyos/master/demo_qemu.png)
 
 ## A simple OS just for fun!
 
