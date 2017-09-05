@@ -4,6 +4,9 @@
 ![alt tag](https://raw.githubusercontent.com/mzeric/tinyos/master/demo_qemu.png)
 
 ## A simple OS just for fun!
+## 最近更新
+* Change Build platform to Linux （ubuntu 16.04） gcc 5.4.0
+* 演示视频：http://v.youku.com/v_show/id_XMzAwNzU4NDg4OA==.html?spm=a2h3j.8428770.3416059.1
 
 ## 不同的版本，可以用github切换不同的版本的tag，如何切换详见github文档
 
