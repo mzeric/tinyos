@@ -4,7 +4,7 @@
 #
 
 bootflp.bin : boot.bin setup.bin    headup.bin  bsboot
-	cat boot.bin setup.bin > bootflp.bin
+	$(COPY) /b boot.bin+setup.bin bootflp.bin
 
 setup.bin: setup.asm
 	$(NASM) setup.asm -f bin -o setup.bin

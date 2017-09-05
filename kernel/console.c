@@ -172,7 +172,7 @@ void credit(void)
 {
 	kpf("\tWelcome to this OS [Brightsky]\n"
 		"this a simple edition,but it's very interesting\n\tjust enjoy! ** ^_^ **"
-		"\n\t\t\t\t\t\t---- Skysmiler	\n\t\t\t\t\t\t(With me:xiatianxiao@gmail.com )");
+		"\n\t\t\t\t\t\t---- Skysmiler	\n\t\t\t\t\t\t(With me:tianxiao.xtx@gmail.com )");
 }
 
 void exec_inter(char* str)

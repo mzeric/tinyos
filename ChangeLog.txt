@@ -1,3 +1,7 @@
+2017-09-05  tianxiao xia  <mzericxia@gmail.com>
+	* add gcc flag -fleading-underscore for compatibility with old asm code compiled by modern gcc
+	* build test on ubuntu 16.04 gcc(5.4.0)
+
 ldflags -r 不合适，原因未知
 gcc -O4 test1异常，不合适，原因未知
 
